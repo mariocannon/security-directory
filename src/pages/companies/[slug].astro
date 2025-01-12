@@ -21,8 +21,43 @@ export function getStaticPaths() {
                 }
             }
         },
-        
-        // Add more companies as needed
+        {
+            params: { slug: 'safeguard-security' },
+            props: {
+                company: {
+                    name: "Safeguard Security",
+                    description: "Premium security solutions in Wellington",
+                    longDescription: "Safeguard Security delivers comprehensive security services throughout the Wellington region. With 20 years of experience, we provide expert installation and monitoring services.",
+                    services: ["Alarm Systems", "Video Surveillance", "Security Consulting"],
+                    region: "Wellington",
+                    address: "45 Protection Road, Wellington",
+                    phone: "04 555 7890",
+                    email: "contact@safeguardsecurity.co.nz",
+                    operatingHours: "Monday - Saturday: 9:00 AM - 6:00 PM",
+                    certifications: ["Master Security Installer", "Wellington Security Association"],
+                    isFeatured: false
+                }
+            }
+        },
+        {
+            params: { slug: 'sentinel-systems' },
+            props: {
+                company: {
+                    name: "Sentinel Systems",
+                    description: "Advanced security solutions in Christchurch",
+                    longDescription: "Sentinel Systems specializes in cutting-edge security technology for residential and commercial clients in Christchurch. Our team of certified professionals ensures top-quality installations.",
+                    services: ["Smart Security Systems", "Remote Monitoring", "Intercom Systems"],
+                    region: "Christchurch",
+                    address: "789 Security Avenue, Christchurch",
+                    phone: "03 987 6543",
+                    email: "info@sentinelsystems.co.nz",
+                    operatingHours: "Monday - Friday: 8:00 AM - 5:00 PM",
+                    certifications: ["Certified Security Expert", "NZSA Gold Member"],
+                    isFeatured: true
+                }
+            }
+        }
+        // You can continue adding more companies following this pattern
     ];
 }
 
