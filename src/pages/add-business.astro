@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout 
-    title="Add Your Security Installation Business"
+    title="Add Your Security Installation Business - Securemyhome.co.nz"
     description="List your security installation business in our directory. Reach more customers across New Zealand.">
     <div class="container mx-auto px-4 py-12">
         <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-12">
-                <h1 class="text-4xl font-bold mb-4">Add Your Business</h1>
-                <p class="text-gray-600">Join our directory of trusted security installation companies across New Zealand</p>
+            <div class="text-center">
+                <h1 class="text-2xl font-bold text-gray-900">Add Your Business to Securemyhome.co.nz</h1>
+                <p class="mt-2 text-gray-600">List your security business and reach more customers</p>
             </div>
             
             <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
@@ -19,8 +19,8 @@ import Layout from '../layouts/Layout.astro';
                     <input type="hidden" name="subject" value="New Business Listing Submission">
                     <input type="hidden" name="from_name" value="NZ Security Directory">
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="col-span-2">
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
                             <label for="businessName" class="block text-sm font-medium text-gray-700 mb-1">Business Name *</label>
                             <input
                                 type="text"
@@ -62,7 +62,7 @@ import Layout from '../layouts/Layout.astro';
                             />
                         </div>
 
-                        <div class="col-span-2">
+                        <div>
                             <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Business Description *</label>
                             <textarea
                                 id="description"
@@ -74,9 +74,9 @@ import Layout from '../layouts/Layout.astro';
                             ></textarea>
                         </div>
 
-                        <div class="col-span-2">
+                        <div>
                             <label class="block text-sm font-medium text-gray-700 mb-3">Services Offered *</label>
-                            <div class="grid grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="flex items-center space-x-3">
                                     <input type="checkbox" id="cctv" name="services[]" value="CCTV" class="w-4 h-4 text-blue-600">
                                     <label for="cctv">CCTV Installation</label>
@@ -97,29 +97,6 @@ import Layout from '../layouts/Layout.astro';
                         </div>
 
                         <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Business Phone *</label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                                placeholder="Enter your phone number"
-                            />
-                        </div>
-
-                        <div>
-                            <label for="website" class="block text-sm font-medium text-gray-700 mb-1">Website</label>
-                            <input
-                                type="url"
-                                id="website"
-                                name="website"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                                placeholder="https://your-website.com"
-                            />
-                        </div>
-
-                        <div class="col-span-2">
                             <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Business Address *</label>
                             <textarea
                                 id="address"
@@ -131,7 +108,21 @@ import Layout from '../layouts/Layout.astro';
                             ></textarea>
                         </div>
 
-                        <div class="col-span-2">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Listing Options</label>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div class="flex items-center space-x-3">
+                                    <input type="checkbox" id="homeFeature" name="listingOptions[]" value="Home Feature" class="w-4 h-4 text-blue-600">
+                                    <label for="homeFeature">Home page feature</label>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <input type="checkbox" id="superFeatured" name="listingOptions[]" value="Super Featured" class="w-4 h-4 text-blue-600">
+                                    <label for="superFeatured">Super featured</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
                             <button
                                 type="submit"
                                 class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-all transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
