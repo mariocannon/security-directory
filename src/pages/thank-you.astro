@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+    title="Thank You for Your Submission"
+    description="Thank you for submitting your security installation business to our directory.">
+    <div class="container mx-auto px-4 py-20">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+                <div class="mb-8">
+                    <svg class="w-20 h-20 text-green-500 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <h1 class="text-3xl font-bold mb-4">Thank You for Your Submission!</h1>
+                    <p class="text-gray-600 mb-6">
+                        We've received your business listing request and will review it shortly. 
+                        You should receive a confirmation email within the next few minutes.
+                    </p>
+                    <p class="text-gray-600">
+                        Our team will review your submission and get in touch if we need any additional information.
+                    </p>
+                </div>
+                <div>
+                    <a href="/" 
+                        class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                        Return to Homepage
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

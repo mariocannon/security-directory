@@ -1,0 +1,92 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+    return [
+        {
+            params: { slug: 'securewatch-nz' },
+            props: {
+                company: {
+                    name: "SecureWatch NZ",
+                    description: "Leading provider of security solutions in Auckland",
+                    longDescription: "SecureWatch NZ has been providing top-tier security installation services across Auckland for over 15 years. We specialize in custom security solutions for both residential and commercial properties.",
+                    services: ["CCTV", "Alarm Systems", "Access Control"],
+                    region: "Auckland",
+                    address: "123 Security Street, Auckland",
+                    phone: "09 123 4567",
+                    email: "info@securewatchnz.co.nz",
+                    operatingHours: "Monday - Friday: 8:30 AM - 5:30 PM",
+                    certifications: ["Licensed Security Installer", "NZSA Member"],
+                    isFeatured: true
+                }
+            }
+        },
+        
+        // Add more companies as needed
+    ];
+}
+
+const { slug } = Astro.params;
+const { company } = Astro.props;
+---
+
+<Layout 
+    title={company.name}
+    description={`${company.name} - Professional security system installation services in ${company.region}. Specializing in ${company.services.join(', ')}.`}>
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <h1 class="text-4xl font-bold">{company.name}</h1>
+                        {company.isFeatured && (
+                            <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">Featured</span>
+                        )}
+                    </div>
+
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-semibold mb-4">About Us</h2>
+                        <p class="text-gray-700">{company.longDescription}</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-2xl font-semibold mb-4">Services</h2>
+                            <ul class="space-y-2">
+                                {company.services.map(service => (
+                                    <li class="flex items-center">
+                                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        {service}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h2 class="text-2xl font-semibold mb-4">Contact Information</h2>
+                            <div class="space-y-3">
+                                <p><strong>Address:</strong> {company.address}</p>
+                                <p><strong>Phone:</strong> {company.phone}</p>
+                                <p><strong>Email:</strong> {company.email}</p>
+                                <p><strong>Hours:</strong> {company.operatingHours}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h2 class="text-2xl font-semibold mb-4">Certifications</h2>
+                        <div class="flex flex-wrap gap-2">
+                            {company.certifications.map(cert => (
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
+                                    {cert}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

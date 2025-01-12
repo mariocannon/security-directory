@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { regions } from '../../data/regions';
+---
+
+<Layout 
+    title="Security System Installers by Region"
+    description="Find security system installers across New Zealand's major regions. Professional CCTV, alarm, and access control system installation services.">
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8">Find Security Installers by Region</h1>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {regions.map(region => (
+                <a 
+                    href={`/regions/${region.name.toLowerCase()}`}
+                    class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+                >
+                    <h2 class="text-xl font-semibold text-gray-900 mb-2">{region.name}</h2>
+                    <p class="text-sm text-gray-600">{region.companies.length} Companies</p>
+                </a>
+            ))}
+        </div>
+    </div>
+</Layout> 
