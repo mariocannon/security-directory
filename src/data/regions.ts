@@ -15,6 +15,16 @@ export const regions: Region[] = [
                 homepageFeature: false
             },
             {
+                name: "Secure works",
+                description: "Leading provider of security solutions in Auckland",
+                services: ["CCTV", "Alarm Systems", "Access Control"],
+                region: "Auckland",
+                slug: "secure-works",
+                isTopFeatured: false,
+                verified: true,
+                homepageFeature: false
+            },
+            {
                 name: "SecureWatch1 NZ",
                 description: "Leading provider of security solutions in Auckland",
                 services: ["CCTV", "Alarm Systems", "Access Control"],
