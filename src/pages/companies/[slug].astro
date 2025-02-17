@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+    return [
+    {
+    params: { slug: 'fortress-security' },
+    props: {
+        company: {
+            name: "Fortress Security",
+            description: "Comprehensive security services for commercial, retail, and residential clients in Auckland.",
+            longDescription: "Fortress Security specializes in the design, supply, installation, and maintenance of cutting-edge security systems for homes and businesses in Auckland.",
+            services: ["CCTV", "Alarm Systems", "Access Control", "Maintenance"],
+            region: "Auckland",
+            address: "123 Secure Lane, Auckland",
+            phone: "09 123 4567",
+            email: "info@fortresssecurity.co.nz",
+            operatingHours: "Monday - Friday: 8:00 AM - 5:00 PM",
+            certifications: ["NZSA Certified", "Security Solutions Expert"],
+            isFeatured: false,
+            website: "https://www.fortresssecurity.co.nz",
+            verified: true,
+        }
+    }
+},
+{
+    params: { slug: 'rasant-security' },
+    props: {
+        company: {
+            name: "Rasant Security",
+            description: "Specialists in home and business security systems with over 25 years of experience in Auckland.",
+            longDescription: "Rasant Security provides expert security solutions, including CCTV installation, alarm systems, and access control for homes and businesses in Auckland.",
+            services: ["CCTV", "Alarm Systems", "Access Control"],
+            region: "Auckland",
+            address: "456 Safety Street, Auckland",
+            phone: "09 987 6543",
+            email: "support@rasantsecurity.co.nz",
+            operatingHours: "Monday - Saturday: 9:00 AM - 6:00 PM",
+            certifications: ["Certified Alarm Installer", "CCTV Specialist"],
+            isFeatured: false,
+            verified: true,
+        }
+    }
+},
+{
+    params: { slug: 'hathaway-technical-services' },
+    props: {
+        company: {
+            name: "Hathaway Technical Services Ltd",
+            description: "Experts in security systems, cameras, and integrated control systems with decades of experience.",
+            longDescription: "Hathaway Technical Services specializes in security system installations, data systems, and audio-visual integration for homes and businesses across Auckland.",
+            services: ["CCTV", "Alarm Systems", "Data Systems", "Audio Visual"],
+            region: "Auckland",
+            address: "789 Protection Road, Auckland",
+            phone: "09 321 7654",
+            email: "contact@hathawaytech.co.nz",
+            operatingHours: "Monday - Friday: 8:30 AM - 5:00 PM",
+            certifications: ["Security Integration Expert", "NZSA Member"],
+            isFeatured: false,
+            verified: true,
+        }
+    }
+},
+{
+    params: { slug: 'matrix-security' },
+    props: {
+        company: {
+            name: "Matrix Security",
+            description: "Providers of integrated security solutions including alarm monitoring and professional patrols.",
+            longDescription: "Matrix Security offers professional-grade security solutions, including alarm monitoring, security patrols, and customized security designs for businesses and homes in Auckland.",
+            services: ["Alarm Monitoring", "Security Patrols", "Integrated Security Design"],
+            region: "Auckland",
+            address: "321 Guard Road, Auckland",
+            phone: "09 654 3210",
+            email: "service@matrixsecurity.co.nz",
+            operatingHours: "24/7 Service Available",
+            certifications: ["Alarm Monitoring Certified", "Security Design Specialist"],
+            isFeatured: false,
+            verified: true,
+        }
+    }
+},
+{
+    params: { slug: 'ads-security' },
+    props: {
+        company: {
+            name: "ADS Security",
+            description: "Complete security solutions provider with international expertise in advanced systems.",
+            longDescription: "ADS Security brings 86 years of international expertise in providing comprehensive security solutions, including CCTV, access control, and fire alarm systems for clients in Auckland.",
+            services: ["CCTV", "Access Control", "Intruder Alarms", "Fire Alarms"],
+            region: "Auckland",
+            address: "987 Secure Avenue, Auckland",
+            phone: "09 567 8901",
+            email: "info@adssecurity.co.nz",
+            operatingHours: "Monday - Friday: 8:00 AM - 5:00 PM",
+            certifications: ["International Security Standards", "Fire Alarm Specialist"],
+            isFeatured: false,
+            verified: true,
+        }
+    }
+}
+
+        // You can continue adding more companies following this pattern
+    ];
+}
+
+const { slug } = Astro.params;
+const { company } = Astro.props;
+---
+
+<Layout 
+    title={company.name}
+    description={`${company.name} - Professional security system installation services in ${company.region}. Specializing in ${company.services.join(', ')}.`}>
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <h1 class="text-4xl font-bold">{company.name}</h1>
+                        {company.isFeatured && (
+                            <span class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">Featured</span>
+                        )}
+                    </div>
+
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-semibold mb-4">About Us</h2>
+                        <p class="text-gray-700">{company.longDescription}</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h2 class="text-2xl font-semibold mb-4">Services</h2>
+                            <ul class="space-y-2">
+                                {company.services.map(service => (
+                                    <li class="flex items-center">
+                                        <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        {service}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h2 class="text-2xl font-semibold mb-4">Contact Information</h2>
+                            <div class="space-y-3">
+                                <p><strong>Location:</strong> {company.region}</p>
+                                <p><strong>Phone:</strong> {company.phone}</p>
+                                <p><strong>Email:</strong> {company.email}</p>
+                                <p><strong>Hours:</strong> {company.operatingHours}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h2 class="text-2xl font-semibold mb-4">Certifications</h2>
+                        <div class="flex flex-wrap gap-2">
+                            {company.certifications.map(cert => (
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
+                                    {cert}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <div class="mt-8 flex gap-4">
+                            <a 
+                                href={`tel:${company.phone}`}
+                                class="flex-1 bg-green-600 text-white py-3 px-6 rounded-lg text-center font-semibold hover:bg-green-700 transition-colors">
+                                Call Now
+                            </a>
+                            <a 
+                                href={company.website} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg text-center font-semibold hover:bg-blue-700 transition-colors">
+                                Visit Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

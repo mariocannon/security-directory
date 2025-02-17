@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CompanyCard from '../components/CompanyCard.astro';
+import { regions } from '../data/regions';
+import { regionImages } from '../data/images';
+
+// Get all featured companies
+const featuredCompanies = regions
+    .flatMap(region => region.companies)
+    .filter(company => company.isFeatured);
+---
+
+<Layout 
+	title="Find Security Installation Companies in New Zealand"
+	description="Directory of trusted security system installers across New Zealand. Find local CCTV, alarm, and access control system installers in your area.">
+	<div class="bg-slate-900 text-white py-20">
+		<div class="container mx-auto px-4 text-center">
+			<h1 class="text-4xl md:text-6xl font-bold mb-6">Find Security Installers Near You</h1>
+			<p class="text-xl mb-8">Trusted security system installation companies across New Zealand</p>
+			<div class="max-w-2xl mx-auto">
+				<div class="bg-white rounded-lg p-2 flex">
+					<select 
+						class="flex-1 p-2 rounded-l text-gray-800"
+						onchange="if(this.value) window.location.href='/regions/' + this.value"
+					>
+						<option value="">Select Region</option>
+						<option value="auckland">Auckland</option>
+						<option value="wellington">Wellington</option>
+						<option value="christchurch">Christchurch</option>
+					</select>
+					<button class="bg-blue-600 text-white px-8 py-2 rounded-r hover:bg-blue-700">
+						Search
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container mx-auto px-4 py-12">
+		<section class="mb-16">
+			<h2 class="text-3xl font-bold mb-8 text-center">Featured Companies</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				{featuredCompanies.map(company => (
+					<CompanyCard {...company} />
+				))}
+			</div>
+		</section>
+
+		<section class="mb-16">
+			<h2 class="text-3xl font-bold mb-8 text-center">Major Regions</h2>
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				{Object.entries(regionImages).map(([key, region]) => (
+					<a href={`/regions/${key}`} class="group relative block h-64 overflow-hidden rounded-lg">
+						<img 
+							src={region.src} 
+							alt={region.alt} 
+							class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+							loading="lazy"
+						/>
+						<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"></div>
+						<div class="absolute bottom-0 p-6 text-white">
+							<h3 class="text-2xl font-bold mb-2">{region.title}</h3>
+							<p class="text-white/90">{region.description}</p>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+	</div>
+</Layout>

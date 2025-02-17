@@ -1,0 +1,173 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { regions } from '../../data/regions';
+
+export function getStaticPaths() {
+    return regions.map(region => ({
+        params: { region: region.name.toLowerCase() },
+        props: { region }
+    }));
+}
+
+const { region } = Astro.props;
+
+// Enhanced structured data with nested business listings
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `https://yourdomain.com/regions/${region.name.toLowerCase()}`,
+    "name": `Security System Installers in ${region.name}`,
+    "description": `Find trusted security system installers in ${region.name}. Professional CCTV, alarm systems, and security solutions.`,
+    "areaServed": {
+        "@type": "City",
+        "name": region.name,
+        "containedInPlace": {
+            "@type": "Country",
+            "name": "New Zealand"
+        }
+    },
+    // Add subOrganization to list all companies in the region
+    "subOrganization": region.companies.map(company => ({
+        "@type": "SecurityService",
+        "name": company.name,
+        "description": company.description,
+        "areaServed": {
+            "@type": "City",
+            "name": region.name
+        },
+        "knowsAbout": company.services,
+        // Add more company details if available
+        ...(company.address && {
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": region.name,
+                "addressCountry": "New Zealand",
+                "streetAddress": company.address
+            }
+        }),
+        ...(company.phone && {
+            "telephone": company.phone
+        }),
+        ...(company.website && {
+            "url": company.website
+        })
+    }))
+};
+---
+
+<Layout 
+    title={`Security System Installers in ${region.name}, NZ`}
+    description={`Find professional security system installers in ${region.name}. Expert installation of CCTV, alarm systems, and security solutions.`}
+    canonical={`https://yourdomain.com/regions/${region.name.toLowerCase()}`}
+>
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content={`Security System Installers in ${region.name}, NZ`} slot="head" />
+    <meta property="og:description" content={`Find professional security system installers in ${region.name}. Expert installation of CCTV, alarm systems, and access control solutions.`} slot="head" />
+    <meta property="og:type" content="website" slot="head" />
+    <meta property="og:url" content={`https://yourdomain.com/regions/${region.name.toLowerCase()}`} slot="head" />
+
+    <div class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8">Security System Installers in {region.name}</h1>
+        
+        <!-- Breadcrumbs with Schema.org markup -->
+        <nav class="text-sm mb-8" aria-label="Breadcrumb">
+            <ol class="flex" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/regions" itemprop="item"><span itemprop="name">Regions</span></a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="mx-2">/</li>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">{region.name}</span>
+                    <meta itemprop="position" content="3" />
+                </li>
+            </ol>
+        </nav>
+
+        {region.companies.length > 0 ? (
+            <>
+                {/* Featured Listing */}
+                {region.companies.find(company => company.isTopFeatured) && (
+                    <article class="bg-white rounded-lg shadow-md p-8 mb-12 border-2 border-blue-500" itemscope itemtype="https://schema.org/LocalBusiness">
+                        <div class="flex flex-col md:flex-row md:space-x-8">
+                            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                                <div class="relative aspect-square rounded-lg overflow-hidden">
+                                    {region.companies.find(company => company.isTopFeatured)?.image ? (
+                                        <img 
+                                            src={region.companies.find(company => company.isTopFeatured)?.image} 
+                                            alt={`${region.companies.find(company => company.isTopFeatured)?.name} security systems`}
+                                            class="object-cover w-full h-full"
+                                            width="1080"
+                                            height="1080"
+                                            itemprop="image"
+                                        />
+                                    ) : (
+                                        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                                            <span class="text-gray-400">No image available</span>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center mb-4">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Featured Installer</span>
+                                </div>
+                                <h2 class="text-2xl font-semibold mb-3" itemprop="name">{region.companies.find(company => company.isTopFeatured)?.name}</h2>
+                                <p class="text-gray-600 mb-6" itemprop="description">{region.companies.find(company => company.isTopFeatured)?.description}</p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    {region.companies.find(company => company.isTopFeatured)?.services.map(service => (
+                                        <span class="bg-gray-100 px-3 py-1 rounded-full text-sm" itemprop="knowsAbout">
+                                            {service}
+                                        </span>
+                                    ))}
+                                </div>
+                                <a
+                                    href={`/companies/${region.companies.find(company => company.isTopFeatured)?.slug}`}
+                                    class="inline-block bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition-colors"
+                                >
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                )}
+
+                {/* Existing Grid */}
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {region.companies.map(company => (
+                        <article class="bg-white rounded-lg shadow-md p-6" itemscope itemtype="https://schema.org/LocalBusiness">
+                            <h2 class="text-xl font-semibold mb-2" itemprop="name">{company.name}</h2>
+                            <p class="text-gray-600 mb-4" itemprop="description">{company.description}</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                {company.services.map(service => (
+                                    <span class="bg-gray-100 px-3 py-1 rounded-full text-sm" itemprop="knowsAbout">
+                                        {service}
+                                    </span>
+                                ))}
+                            </div>
+                            <a
+                                href={`/companies/${company.slug}`}
+                                class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+                            >
+                                View Details
+                            </a>
+                        </article>
+                    ))}
+                </div>
+            </>
+        ) : (
+            <div class="text-center py-12">
+                <p class="text-xl text-gray-600">No security system installers listed in {region.name} yet.</p>
+                <p class="mt-4">Are you a security system installer? <a href="/contact" class="text-blue-600 hover:underline">Contact us</a> to list your business.</p>
+            </div>
+        )}
+    </div>
+</Layout>

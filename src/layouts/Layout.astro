@@ -1,0 +1,116 @@
+---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<script defer data-domain="securemyhome.co.nz" src="https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"></script>
+        <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+		<title>{title}</title>
+	</head>
+	<body>
+		<header class="bg-slate-900 text-white">
+			<nav class="container mx-auto px-4 py-6">
+				<div class="flex justify-between items-center">
+					<a href="/" class="text-2xl font-bold">NZ Security Directory</a>
+					<div class="hidden md:flex space-x-6 items-center">
+						<a href="/" class="hover:text-blue-400">Home</a>
+						<a href="/regions" class="hover:text-blue-400">Regions</a>
+						<a href="/about" class="hover:text-blue-400">About</a>
+						<a href="/contact" class="hover:text-blue-400">Contact</a>
+						<a href="/pricing" class="hover:text-blue-400">Pricing</a>
+						<a href="/add-business" class="bg-blue-600 px-4 py-1.5 rounded-lg hover:bg-blue-700">Add Your Business</a>
+					</div>
+					<button class="md:hidden" id="mobile-menu-button" aria-label="Toggle menu">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16" />
+						</svg>
+					</button>
+				</div>
+				<div class="md:hidden hidden" id="mobile-menu">
+					<div class="flex flex-col space-y-4 mt-4 pb-4">
+						<a href="/" class="hover:text-blue-400">Home</a>
+						<a href="/regions" class="hover:text-blue-400">Regions</a>
+						<a href="/about" class="hover:text-blue-400">About</a>
+						<a href="/contact" class="hover:text-blue-400">Contact</a>
+						<a href="/pricing" class="hover:text-blue-400">Pricing</a>
+						<a href="/add-business" class="bg-blue-600 px-4 py-1.5 rounded-lg hover:bg-blue-700 inline-block text-center">Add Your Business</a>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer class="bg-slate-900 text-white mt-12">
+			<div class="container mx-auto px-4 py-8">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div>
+						<h3 class="text-xl font-bold mb-4">NZ Security Directory</h3>
+						<p>Find trusted security installation companies across New Zealand.</p>
+					</div>
+					<div>
+						<h3 class="text-xl font-bold mb-4">Quick Links</h3>
+						<ul class="space-y-2">
+							<li><a href="/about" class="hover:text-blue-400">About Us</a></li>
+							<li><a href="/contact" class="hover:text-blue-400">Contact</a></li>
+							<li><a href="/add-business" class="hover:text-blue-400">Add Your Business</a></li>
+						</ul>
+					</div>
+					<div>
+						<h3 class="text-xl font-bold mb-4">Major Regions</h3>
+						<ul class="space-y-2">
+							<li><a href="/regions/Northland" class="hover:text-blue-400">Northland</a></li>
+							<li><a href="/regions/auckland" class="hover:text-blue-400">Auckland</a></li>
+							<li><a href="/regions/waikato" class="hover:text-blue-400">Waikato</a></li>
+							<li><a href="/regions/wellington" class="hover:text-blue-400">Wellington</a></li>
+							<li><a href="/regions/christchurch" class="hover:text-blue-400">Christchurch</a></li>
+							<li><a href="/regions/canterbury" class="hover:text-blue-400">Canterbury</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="border-t border-slate-800 mt-8 pt-8 text-center">
+					<p>&copy; {new Date().getFullYear()} NZ Security Directory. All rights reserved.</p>
+				</div>
+			</div>
+		</footer>
+		<script>
+			const mobileMenuButton = document.getElementById('mobile-menu-button');
+			const mobileMenu = document.getElementById('mobile-menu');
+
+			mobileMenuButton?.addEventListener('click', () => {
+				mobileMenu?.classList.toggle('hidden');
+			});
+		</script>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #f6f6f6;
+	}
+</style>
