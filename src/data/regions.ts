@@ -12,7 +12,7 @@ export const regions: Region[] = [
                 slug: "fortress-security",
                 isTopFeatured: true,
                 verified: false,
-                homepageFeature: false
+                homepageFeature: true
             },
             {
                 name: "Rasant Security",
@@ -22,7 +22,7 @@ export const regions: Region[] = [
                 slug: "rasant-security",
                 isTopFeatured: false,
                 verified: false,
-                homepageFeature: false
+                homepageFeature: true
             },
             {
                 name: "Hathaway Technical Services Ltd",

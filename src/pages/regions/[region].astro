@@ -36,6 +36,14 @@ const structuredData = {
             "name": region.name
         },
         "knowsAbout": company.services,
+        // Add homepageFeature property
+        ...(company.homepageFeature && {
+            "additionalProperty": {
+                "@type": "PropertyValue",
+                "name": "homepageFeature",
+                "value": true
+            }
+        }),
         // Add more company details if available
         ...(company.address && {
             "address": {
