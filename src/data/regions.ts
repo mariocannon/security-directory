@@ -12,7 +12,7 @@ export const regions: Region[] = [
                 slug: "fortress-security",
                 isTopFeatured: true,
                 verified: false,
-                homepageFeature: true
+                homepageFeature: false
             },
             {
                 name: "Rasant Security",
