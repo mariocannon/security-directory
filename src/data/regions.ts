@@ -50,48 +50,30 @@ export const regions: Region[] = [
                 services: ["CCTV", "Access Control", "Intruder Alarms", "Fire Alarms"],
                 region: "Auckland",
                 slug: "ads-security",
-                isTopFeatured: false,
+                isTopFeatured: true,
                 verified: false,
-                homepageFeature: false
+                homepageFeature: true
             }
             
         ]
     },
-    {
-        name: 'Wellington',
-        companies: []
-    },
-    {
-        name: 'Christchurch',
-        companies: []
-    },
-    {
-        name: 'Hamilton',
-        companies: []
-    },
-    {
-        name: 'Tauranga',
-        companies: []
-    },
-    {
-        name: 'Dunedin',
-        companies: []
-    },
-    {
-        name: 'Palmerston North',
-        companies: []
-    },
-    {
-        name: 'Napier',
-        companies: []
-    },
-    {
-        name: 'Rotorua',
-        companies: []
-    },
-    {
-        name: 'New Plymouth',
-        companies: []
-    },
-    { name: 'Ashburton', companies: [] },
+    { name: 'Gisborne', companies: [] },
+    { name: 'Hamilton', companies: [] },
+    { name: 'Napier', companies: [] },
+    { name: 'New Plymouth', companies: [] },
+    { name: 'Palmerston North', companies: [] },
+    { name: 'Rotorua', companies: [] },
+    { name: 'Tauranga', companies: [] },
+    { name: 'Wellington', companies: [] },
+    { name: 'Whanganui', companies: [] },
+    { name: 'Whangārei', companies: [] },
+
+    // South Island
+    { name: 'Blenheim', companies: [] },
+    { name: 'Christchurch', companies: [] },
+    { name: 'Dunedin', companies: [] },
+    { name: 'Invercargill', companies: [] },
+    { name: 'Nelson', companies: [] },
+    { name: 'Queenstown', companies: [] },
+    { name: 'Timaru', companies: [] },
 ];
