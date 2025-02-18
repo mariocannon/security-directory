@@ -10,7 +10,7 @@ export const regions: Region[] = [
                 services: ["CCTV", "Alarm Systems", "Access Control", "Maintenance"],
                 region: "Auckland",
                 slug: "fortress-security",
-                isTopFeatured: true,
+                isTopFeatured: false,
                 verified: false,
                 homepageFeature: false
             },
@@ -22,7 +22,7 @@ export const regions: Region[] = [
                 slug: "rasant-security",
                 isTopFeatured: false,
                 verified: false,
-                homepageFeature: true
+                homepageFeature: false
             },
             {
                 name: "Hathaway Technical Services Ltd",
