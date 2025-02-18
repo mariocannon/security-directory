@@ -92,5 +92,6 @@ export const regions: Region[] = [
     {
         name: 'New Plymouth',
         companies: []
-    }
+    },
+    { name: 'Ashburton', companies: [] },
 ];
