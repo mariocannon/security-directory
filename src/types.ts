@@ -8,4 +8,10 @@ export interface Company {
     featuredImage?: string;  // Optional field that's only used when isTopFeatured is true
     verified: boolean;
     homepageFeature?: boolean;
+    image?: string;
+} 
+
+export interface Region {
+    name: string;
+    companies: Company[];
 } 

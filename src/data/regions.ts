@@ -12,7 +12,8 @@ export const regions: Region[] = [
                 slug: "fortress-security",
                 isTopFeatured: false,
                 verified: false,
-                homepageFeature: false
+                homepageFeature: false,
+                image: "../../logos/logo1.webp"
             },
             {
                 name: "Rasant Security",
@@ -22,7 +23,8 @@ export const regions: Region[] = [
                 slug: "rasant-security",
                 isTopFeatured: false,
                 verified: false,
-                homepageFeature: false
+                homepageFeature: false,
+                image: "../../logos/logo1.webp"
             },
             {
                 name: "Hathaway Technical Services Ltd",
@@ -32,7 +34,8 @@ export const regions: Region[] = [
                 slug: "hathaway-technical-services",
                 isTopFeatured: false,
                 verified: false,
-                homepageFeature: false
+                homepageFeature: false,
+                image: "../../logos/logo1.webp"
             },
             {
                 name: "Matrix Security",
@@ -40,9 +43,10 @@ export const regions: Region[] = [
                 services: ["Alarm Monitoring", "Security Patrols", "Integrated Security Design"],
                 region: "Auckland",
                 slug: "matrix-security",
-                isTopFeatured: false,
+                isTopFeatured: true,
                 verified: true,
-                homepageFeature: false
+                homepageFeature: false,
+                image: "../../logos/logo1.webp"
             },
             {
                 name: "ADS Security",
@@ -50,9 +54,10 @@ export const regions: Region[] = [
                 services: ["CCTV", "Access Control", "Intruder Alarms", "Fire Alarms"],
                 region: "Auckland",
                 slug: "ads-security",
-                isTopFeatured: true,
+                isTopFeatured: false,
                 verified: false,
-                homepageFeature: true
+                homepageFeature: true,
+                image: "/images/auckland.jpg"
             }
             
         ]
